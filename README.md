@@ -64,9 +64,3 @@ str: (замаскированный номер счета или замаски
 Для получения дополнительной информации обратитесь к [документации](README.md).
 ## Лицензия:
 Проект лицензирован по [лицензии MIT](LICENSE)
-
-
-def sort_by_date(data_list: list, data_key = 'date', descending=True) -> list:
-    """Функция сортирует список словарей по дате в заданном по умолчанию порядке сортировки - по убыванию"""
-    data_key = datetime.strptime('2023-10-22', '%Y-%m-%d')
-    return sorted(data_list, key=lambda x: datetime.strptime(x[data_key], '%Y-%m-%dT%H:%M:%S.%f'), reverse=descending)
