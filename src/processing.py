@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 def filter_by_state(list_of_dict: list, state: str = 'EXECUTED') -> list:
-    """Функция фильтрует список словарей по значению ключа"""
+    """Функция фильтрует список словарей по заданному по умолчанию значению ключа"""
     filtered_list = []
     for dict_item in list_of_dict:
         if dict_item.get('state') == state:
