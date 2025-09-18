@@ -10,6 +10,6 @@ def filter_by_state(list_of_dict: list, state: str = "EXECUTED") -> list:
     return filtered_list
 
 
-def sort_by_date(data_list: list, date_key: str = "date", descending: bool = True) -> list:
+def sort_by_date(data_list: list, descending: bool = True) -> list:
     """Функция сортирует список словарей по дате в заданном по умолчанию порядке сортировки - по убыванию"""
-    return sorted(data_list, key=lambda x: datetime.strptime(x[date_key], "%Y-%m-%dT%H:%M:%S.%f"), reverse=descending)
+    return sorted(data_list, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=descending)
