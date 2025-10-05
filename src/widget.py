@@ -3,13 +3,20 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(info_card: str) -> str:
     """Функция обрабатывает информацию и о картах, и о счетах, возвращает замаскированный номер"""
-    info_card_split = info_card.split()
-    number_card = info_card_split[1]
-    if info_card_split[0] == "Счет":
-        result = get_mask_account(number_card)
+    info_card = info_card.strip()
+    parts = info_card.split()
+
+    if len(parts) < 2:
+        return "Некорректный ввод"
+
+    number = parts[-1]
+    name = " ".join(parts[:-1])
+
+    if name == "Счет":
+        result = get_mask_account(number)
     else:
-        result = get_mask_card_number(number_card)
-    return result
+        result = get_mask_card_number(number)
+    return f"{name} {result}"
 
 
 def get_date(date_incorrect: str) -> str:
