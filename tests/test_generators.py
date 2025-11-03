@@ -1,9 +1,5 @@
-from locale import currency
-from re import match
-
 import pytest
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
-from tests.conftest import usd_transactions
 
 
 @pytest.mark.usefixtures("usd_transactions")

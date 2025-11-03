@@ -12,13 +12,15 @@ def filter_by_currency(usd_transactions: list, currency: str) -> Iterator:
 
 
 def transaction_descriptions(usd_transactions: list) -> Iterator:
-    """Генератор принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
+    """Генератор принимает список словарей с транзакциями и
+    возвращает описание каждой операции по очереди"""
     for usd_transaction in usd_transactions:
         yield usd_transaction.get("description")
 
 
 def card_number_generator(start: int, end: int) -> Iterator:
-    """Генератор выдает номера банковских карт в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты"""
+    """Генератор выдает номера банковских карт
+    в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты"""
     min_card = 1
     max_card = 9999999999999999
     if start < min_card:
