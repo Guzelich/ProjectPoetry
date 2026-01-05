@@ -11,7 +11,8 @@ def log(filename: str = "myfile_log.txt") -> Any:
                 start_time = time()
                 result = func(*args, **kwargs)
                 end_time = time()
-                msg = f"{func.__name__} ok, result: {end_time} - {start_time}, {result}\n"
+                duration = end_time - start_time
+                msg = f"{func.__name__} ok, result: {result}, time: {duration:.6f}, sec\n"
                 _output(msg, filename)
                 return result
             except Exception as e:
