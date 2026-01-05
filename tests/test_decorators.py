@@ -12,7 +12,7 @@ def log_file(tmp_path):
     # Файл будет автоматически удалён после завершения теста (подсказка Германа, если что на удаление)
 
 
-def test_successful_function_call(log_file):
+def test_successful_function_call(log_file) -> None:
     @log(filename=log_file)
     def add(a, b):
         return a + b
@@ -26,7 +26,7 @@ def test_successful_function_call(log_file):
     assert "result:" in content
 
 
-def test_function_with_exception(log_file):
+def test_function_with_exception(log_file) -> None:
     @log(filename=log_file)
     def divide(a, b):
         return a / b
@@ -40,7 +40,7 @@ def test_function_with_exception(log_file):
     assert "args=(1, 0)" in content
 
 
-def test_function_with_kwargs(log_file):
+def test_function_with_kwargs(log_file) -> None:
     @log(filename=log_file)
     def greet(name="World"):
         return f"Hello, {name}!"
@@ -54,7 +54,7 @@ def test_function_with_kwargs(log_file):
     assert "kwargs={'name': 'German'}" not in content  # kwargs не выводятся при успехе
 
 
-def test_function_with_exception_and_kwargs(log_file):
+def test_function_with_exception_and_kwargs(log_file) -> None:
     @log(filename=log_file)
     def risky_func(value, should_fail=False):
         if should_fail:
@@ -70,7 +70,7 @@ def test_function_with_exception_and_kwargs(log_file):
     assert "kwargs={'should_fail': True}" in content
 
 
-def test_multiple_calls_append_to_log(log_file):
+def test_multiple_calls_append_to_log(log_file) -> None:
     @log(filename=log_file)
     def echo(x):
         return x
