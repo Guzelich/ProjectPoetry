@@ -1,3 +1,5 @@
+from fileinput import filename
+
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
 
@@ -51,3 +53,11 @@ usd_transactions = [
         "description": "Перевод с карты на карту"
     }
 ]
+
+
+@log(filename="myfile_log.txt")
+def divide(a, b):
+    return a / b
+
+divide(30, 3) #Успех
+divide(30, 0) #Ошибка
