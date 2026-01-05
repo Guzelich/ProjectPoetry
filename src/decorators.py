@@ -1,5 +1,6 @@
 import functools
 from typing import Any
+from time import time
 
 
 def log(filename: str = "myfile_log.txt") -> Any:
@@ -7,8 +8,10 @@ def log(filename: str = "myfile_log.txt") -> Any:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
+                start_time = time()
                 result = func(*args, **kwargs)
-                msg = f"{func.__name__} ok, result: {result}\n"
+                end_time = time()
+                msg = f"{func.__name__} ok, result: {end_time} - {start_time}, {result}\n"
                 _output(msg, filename)
                 return result
             except Exception as e:
@@ -22,7 +25,7 @@ def log(filename: str = "myfile_log.txt") -> Any:
 
 
 def _output(msg: Any, filename: Any) -> None:
-    if filename:
+    if filename is not None:
         with open(filename, "a") as f:
             f.write(msg)
     else:
